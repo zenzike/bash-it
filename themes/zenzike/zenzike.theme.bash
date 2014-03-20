@@ -73,7 +73,7 @@ function powerline_last_status_prompt {
     if [[ "$1" -eq 0 ]]; then
         LAST_STATUS_PROMPT=""
     else
-        LAST_STATUS_PROMPT="$(set_rgb_color - ${LAST_STATUS_THEME_PROMPT_COLOR}) ${LAST_STATUS} ${normal}$(set_rgb_color ${LAST_STATUS_THEME_PROMPT_COLOR} -)${THEME_PROMPT_SEPARATOR}${normal}"
+        LAST_STATUS_PROMPT="$(set_rgb_color - ${LAST_STATUS_THEME_PROMPT_COLOR}) ${LAST_STATUS} ${normal}$(set_rgb_color ${LAST_STATUS_THEME_PROMPT_COLOR} -)${THEME_PROMPT_SEPARATOR}\n${normal}"
     fi
 }
 
@@ -86,7 +86,7 @@ function powerline_prompt_command() {
     powerline_cwd_prompt
     powerline_last_status_prompt LAST_STATUS
 
-    PS1="${SHELL_PROMPT}${VIRTUALENV_PROMPT}${CWD_PROMPT}${SCM_PROMPT}${LAST_STATUS_PROMPT}\n${red}\$${normal} "
+    PS1="${LAST_STATUS_PROMPT}${SHELL_PROMPT}${VIRTUALENV_PROMPT}${CWD_PROMPT}${SCM_PROMPT}\n${red}\$${normal} "
 }
 
 PROMPT_COMMAND=powerline_prompt_command
